@@ -65,6 +65,13 @@ set history=50
 set scrolloff=4
 set ruler
 
+"folding
+setlocal foldmethod=indent
+
+"insert new line in normal mode
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
+
 "Habit making... disable cursor key
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -100,6 +107,8 @@ hi PythonSemicolon ctermfg=1 guifg=red cterm=reverse
 au FileType python syntax match PythonSemicolon /\zs\(;*\s*;\+\)*\ze\s*$/
 set cursorline
 hi CursorLine term=bold cterm=bold ctermbg=233
+hi TODOtext ctermfg=1 guifg=red cterm=reverse
+match TODOtext /TODO/
 
 "Set cursor
 "For cygwin
@@ -119,7 +128,7 @@ endif
 
 "python syntax
 au FileType python set expandtab
-au FileType python set tw=72 cc=+1
+au FileType python set tw=79 cc=+1
 
 "git commit message shouldn't be too long
 au FileType gitcommit set tw=72 cc=+1
@@ -138,6 +147,9 @@ func Compile()
 		echo "Unsupported filetype."
 	endif
 endfunc
+
+"F7 auto fix indent
+map <F7> mzgg=G`z
 
 "Fuckbug
 "F8 fuck bug
