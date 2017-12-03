@@ -1,4 +1,12 @@
-cd /d/
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine=Linux;;
+    MSYS*)      machine=MSYS;;
+    MINGW*)     machine=MinGw;;
+    *)          machine="UNKNOWN:${unameOut}"
+esac
+echo "Machine=${machine}"
+
 
 alias cd..="cd .."
 alias sl="sl -e"
@@ -12,14 +20,7 @@ alias open="xdg-open"
 alias genymotion="/opt/genymotion/genymotion"
 alias 'android-studio'="/opt/android-studio/bin/studio.sh"
 alias 'ideaIDE'="/opt/idea-IC-143.1184.17/bin/idea.sh"
-alias NTU='cd /d/NTU'
 alias exrdisplay="/d/NTU/rendering/openexr-1.4.0-vs2005/bin/exrdisplay"
-
-function beep() {
-	while /bin/true;
-		do echo -e "\a";
-	done
-}
 
 export ANDROID_HOME="/home/aalexx/Android/Sdk"
 #export PATH="$PATH:/sbin"
@@ -30,6 +31,20 @@ export PATH="$PATH:/d/gadget/apache-maven-3.3.9/bin"
 #eval "$(thefuck --alias)"
 
 source ~/.bash_git
+
+function beep() {
+	while /bin/true;
+		do echo -e "\a";
+	done
+}
+
+# Platform related stuff
+if [ "$machine" == "MSYS" ]; then
+	#MSYS2
+	cd /d/
+	export NTU='/d/NTU'
+	export desktop="/c/Users/PinXian/Desktop"
+fi
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
