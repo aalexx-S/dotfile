@@ -7,6 +7,7 @@ case "${unameOut}" in
 esac
 echo "Machine=${machine}"
 
+export LANG=C.utf-8
 
 alias cd..="cd .."
 alias sl="sl -e"
@@ -16,16 +17,6 @@ alias l="ls"
 alias rm="rm -i"
 alias cls="clear"
 alias open="xdg-open"
-
-alias genymotion="/opt/genymotion/genymotion"
-alias 'android-studio'="/opt/android-studio/bin/studio.sh"
-alias 'ideaIDE'="/opt/idea-IC-143.1184.17/bin/idea.sh"
-alias exrdisplay="/d/NTU/rendering/openexr-1.4.0-vs2005/bin/exrdisplay"
-
-export ANDROID_HOME="/home/aalexx/Android/Sdk"
-#export PATH="$PATH:/sbin"
-#export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME//tools"
-export PATH="$PATH:/d/gadget/apache-maven-3.3.9/bin"
 
 #thefuck
 #eval "$(thefuck --alias)"
