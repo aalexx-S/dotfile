@@ -32,9 +32,8 @@ function beep() {
 # Platform related stuff
 if [ "$machine" == "MSYS" ]; then
 	#MSYS2
-	cd /d/
-	export NTU='/d/NTU'
-	export desktop="/c/Users/PinXian/Desktop"
+	cd /e/
+	export PATH=$PATH:/${JAVA_HOME//+([:\\])//}/bin
 fi
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
