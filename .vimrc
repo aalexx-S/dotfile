@@ -2,8 +2,6 @@
 "Vundle-vim bundle a vim plugin manager.
 "jump to 'vimrc start' tag to skip
 "*****************************************
-" windows and all the stuff under windows shouldn't use this..
-if ! has ("win32") && ! has ("win32unix")
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -27,7 +25,11 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Git plugin not hosted on GitHub
 " ex: Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'Valloric/YouCompleteMe'
+if ! has ("win32") && ! has ("win32unix")
+	" windows and all the stuff under windows shouldn't use this..
+	Plugin 'Valloric/YouCompleteMe'
+endif
+Plugin 'ap/vim-templates'
 " git repos on your local machine (i.e. when working on your own plugin)
 " ex: Plugin 'file:///home/gmarik/path/to/plugin'
 
@@ -53,7 +55,6 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-endif
 
 "vimrc start
 set bs=2
