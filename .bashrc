@@ -32,8 +32,14 @@ function beep() {
 # Platform related stuff
 if [ "$machine" == "MSYS" ]; then
 	#MSYS2
-	cd /e/
 	export PATH=$PATH:/${JAVA_HOME//+([:\\])//}/bin
+fi
+
+if [ ! -z "$MSVSCODE" ]; then
+    # Opened from visual studio code
+	cd "$MSVSCODEDIR"
+	unset MSVSCODE
+	unset MSVSCODEDIR
 fi
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
