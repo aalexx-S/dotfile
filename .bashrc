@@ -29,6 +29,14 @@ function beep() {
 	done
 }
 
+function git() {
+	if [[ $@ == "branch --show-description" ]]; then
+		bash ~/.git_show_description.sh
+	else
+		command git "$@"
+	fi
+}
+
 # Platform related stuff
 if [ "$machine" == "MSYS" ]; then
 	#MSYS2
