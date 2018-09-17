@@ -109,7 +109,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-	PS1='\n \[\e[01;34m\]\d \[\e[00;36m\]\t\n \[\e[36m\][\!] ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u @ \h\[\033[00m\]: \[\033[01;34m\]$(sed s@$HOME@~@ <<< ${PWD%/*})/\[\e[38;5;208m\]${PWD##*/}\[\e[0m\]\[\033[00m\]\n\[\033[1;31m\]$(__git_ps1)\[\033[00m\] \$ '
+	PS1='\n \[\e[38;5;26m\]\d \[\e[00;36m\][ \t ]\n \[\e[36m\][\!] ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u @ \h\[\033[00m\]: \[\033[38;5;26m\]$(sed s@$HOME@~@ <<< ${PWD%/*})/\[\e[38;5;208m\]${PWD##*/}\[\e[0m\]\[\033[00m\]\n\[\033[1;31m\]$(__git_ps1)\[\033[00m\] \$ '
 else
     PS1='\n${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
