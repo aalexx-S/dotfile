@@ -32,6 +32,10 @@ function beep() {
 function git() {
 	if [[ $@ == "branch --show-description" ]]; then
 		bash ~/.git_show_description.sh
+	elif [[ $@ == "log -o" ]]; then
+		command git log --oneline
+	elif [[ $@ == "log -og" ]]; then
+		command git log --oneline --graph
 	else
 		command git "$@"
 	fi
