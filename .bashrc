@@ -1,10 +1,19 @@
 unameOut="$(uname -s)"
 case "${unameOut}" in
-    Linux*)     machine=Linux;;
+    Linux*)     
+		if grep -q Microsoft /proc/version; then
+			machine=WSL
+		else
+			machine=Linux
+		fi
+	;;
     MSYS*)      machine=MSYS;;
     MINGW*)     machine=MinGw;;
     *)          machine="UNKNOWN:${unameOut}"
 esac
+
+
+
 echo "Machine=${machine}"
 
 export LANG=C.utf-8
@@ -16,7 +25,6 @@ alias ll="ls -l --color=auto"
 alias l="ls"
 alias rm="rm -i"
 alias cls="clear"
-alias open="xdg-open"
 
 #thefuck
 #eval "$(thefuck --alias)"
@@ -38,6 +46,18 @@ function git() {
 		command git log --oneline --graph
 	else
 		command git "$@"
+	fi
+}
+
+function open() {
+	if [[ $machine == "WSL" ]]; then
+		if [[ $@ == "" ]]; then
+			echo "Nothing to open!!"
+			return
+		fi
+		command cmd.exe /C start "$@"
+	else
+		command xdg-open "$@"
 	fi
 }
 
