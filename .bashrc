@@ -132,8 +132,33 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# Bash prompt functions
+function git_stash_check_current_branch(){
+	if [ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1 ; then 
+		branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+		stashes=`git stash list | grep -i "on $branch"`
+		if [[ $stashes ]] ; then
+			echo "!!Stash!! "
+		fi
+	fi
+}
+
+function parse_current_directory(){
+	cur=${PWD/$HOME/"~"}
+	if [[ $cur == "~" ]] ; then
+		cur="~/"
+	fi
+	echo -e "\033[38;5;26m${cur%/*}/\e[38;5;208m${cur##*/}"
+
+}
+
+# Bash prompt magic
+function set_bash_prompt() {
+	PS1='\n \[\e[38;5;26m\]\d \[\e[00;36m\][ \t ]\n \[\e[36m\][\!] ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u @ \h\[\033[00m\]: $(parse_current_directory)\[\e[0m\]\[\033[00m\]\n\[\033[1;31m\]$(__git_ps1) $(git_stash_check_current_branch)\[\033[00m\]\$ '
+}
+
 if [ "$color_prompt" = yes ]; then
-	PS1='\n \[\e[38;5;26m\]\d \[\e[00;36m\][ \t ]\n \[\e[36m\][\!] ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u @ \h\[\033[00m\]: \[\033[38;5;26m\]$(sed s@$HOME@~@ <<< ${PWD%/*})/\[\e[38;5;208m\]${PWD##*/}\[\e[0m\]\[\033[00m\]\n\[\033[1;31m\]$(__git_ps1)\[\033[00m\] \$ '
+	PROMPT_COMMAND=set_bash_prompt
 else
     PS1='\n${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
