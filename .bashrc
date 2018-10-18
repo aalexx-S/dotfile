@@ -138,7 +138,7 @@ function git_stash_check_current_branch(){
 		branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
 		stashes=`git stash list | grep -i "on $branch"`
 		if [[ $stashes ]] ; then
-			echo "!!Stash!! "
+			echo -e " \033[1;31;7m!!Stash!!"
 		fi
 	fi
 }
@@ -154,7 +154,7 @@ function parse_current_directory(){
 
 # Bash prompt magic
 function set_bash_prompt() {
-	PS1='\n \[\e[38;5;26m\]\d \[\e[00;36m\][ \t ]\n \[\e[36m\][\!] ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u @ \h\[\033[00m\]: $(parse_current_directory)\[\e[0m\]\[\033[00m\]\n\[\033[1;31m\]$(__git_ps1) $(git_stash_check_current_branch)\[\033[00m\]\$ '
+	PS1='\n \[\e[38;5;26m\]\d \[\e[00;36m\][ \t ]\n \[\e[36m\][\!] ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u @ \h\[\033[00m\]: $(parse_current_directory)\[\e[0m\]\[\033[00m\]\n\[\033[1;31m\]$(__git_ps1)$(git_stash_check_current_branch)\[\033[00m\] \$ '
 }
 
 if [ "$color_prompt" = yes ]; then
