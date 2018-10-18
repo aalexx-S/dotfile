@@ -16,7 +16,7 @@ esac
 
 echo "Machine=${machine}"
 
-export LANG=C.utf-8
+export LANG=C.UTF-8
 
 alias cd..="cd .."
 alias sl="sl -e"
@@ -60,6 +60,25 @@ function open() {
 		command xdg-open "$@"
 	fi
 }
+
+# hhighlighter setup
+# download ack if not exist
+if [[ ! -f ~/bin/ack ]] ; then
+	echo "Downloading ack, a better grep tool."
+	set -x
+	mkdir -p ~/bin/
+	curl https://beyondgrep.com/ack-2.16-single-file > ~/bin/ack && chmod 0755 ~/bin/ack
+	{ set +x; } 2>/dev/null
+fi
+# download hhighlighter if not exist
+if [[ ! -f ~/hhighlighter.sh ]] ; then
+	echo "Downloading hhighlighter, a better grep tool build on ack."
+	set -x
+	curl https://raw.githubusercontent.com/paoloantinori/hhighlighter/b9c90bd100e68cb3e22d652200c200431ded9069/h.sh > ~/hhighlighter.sh
+	{ set +x; } 2>/dev/null
+fi
+# load hhighlighter script
+source ~/hhighlighter.sh
 
 # Platform related stuff
 if [ "$machine" == "MSYS" ]; then
