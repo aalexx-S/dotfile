@@ -26,10 +26,9 @@ Plugin 'VundleVim/Vundle.vim'
 " Git plugin not hosted on GitHub
 " ex: Plugin 'git://git.wincent.com/command-t.git'
 if ! has ("win32") && ! has ("win32unix")
-	" windows and all the stuff under windows shouldn't use this..
+	" windows and all the stuff under windows shouldn't use thess
 	Plugin 'Valloric/YouCompleteMe'
 endif
-Plugin 'ap/vim-templates'
 " git repos on your local machine (i.e. when working on your own plugin)
 " ex: Plugin 'file:///home/gmarik/path/to/plugin'
 
@@ -54,7 +53,6 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
 
 "vimrc start
 set bs=2
@@ -100,8 +98,10 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 "Display
 set t_Co=256
 syntax on
-set background=dark
+set encoding=utf-8
 colorscheme maroloccio
+set background=dark
+hi Normal ctermbg=black
 hi ExtraWhitespace ctermbg=30 guibg=#008787
 match ExtraWhitespace /\s\+$\| \+\ze\t/
 hi PythonSemicolon ctermfg=1 guifg=red cterm=reverse
@@ -129,7 +129,7 @@ endif
 
 "python syntax
 au FileType python set expandtab
-au FileType python set tw=79 cc=+1
+""au FileType python set tw=79 cc=+1
 
 "git commit message shouldn't be too long
 au FileType gitcommit set tw=72 cc=+1
@@ -137,6 +137,18 @@ au FileType gitcommit set tw=72 cc=+1
 "restore cursor postion after closing a file
 set viminfo='10,\"100,:20,%,n~/.viminfo
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+
+"setup shell env
+set shell=bash\ --login
+
+"markdown preview in web browser
+map <C-p> :call Markdown_preview()<Enter><C-l>
+func Markdown_preview()
+	exec 'w'
+	if &filetype=='markdown'
+		silent exec "!open %"
+	endif
+endfunc
 
 "F9 compile ^^
 map <F9> :call Compile()<Enter>

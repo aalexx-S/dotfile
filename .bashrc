@@ -16,7 +16,7 @@ esac
 
 echo "Machine=${machine}"
 
-export LANG=C.UTF-8
+export LANG=zh_TW.UTF-8
 
 alias cd..="cd .."
 alias sl="sl -e"
@@ -55,8 +55,15 @@ function open() {
 			echo "Nothing to open!!"
 			return
 		fi
-		command cmd.exe /C start "$@"
+		# set default program for markdown
+		if [[ $@ == *.md ]]; then
+			# prepend chrome to the argument
+			# use chrome to open .md files.
+			command set -- chrome "$@"
+		fi
+		command cmd.exe /c start "$@"
 	else
+
 		command xdg-open "$@"
 	fi
 }
