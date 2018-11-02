@@ -12,9 +12,10 @@ case "${unameOut}" in
     *)          machine="UNKNOWN:${unameOut}"
 esac
 
-
-
-echo "Machine=${machine}"
+# if in interactive mode
+if [[ $- == *i* ]]; then
+	echo "Machine=${machine}"
+fi
 
 export LANG=zh_TW.UTF-8
 
