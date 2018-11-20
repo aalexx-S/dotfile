@@ -19,6 +19,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 " ex: Plugin 'tpope/vim-fugitive'
+Plugin 'ntpeters/vim-better-whitespace'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " ex: Plugin 'L9'
@@ -56,6 +57,9 @@ filetype plugin indent on    " required
 
 " YCM GetDoc shortcut
 map <C-d> :YcmCompleter GetDoc<ENTER>
+
+" better white spaces
+let g:better_whitespace_enabled=1
 
 "vimrc start
 set bs=2
@@ -106,12 +110,13 @@ set encoding=utf-8
 colorscheme maroloccio
 set background=dark
 hi Normal ctermbg=black
-hi ExtraWhitespace ctermbg=30 guibg=#008787
-match ExtraWhitespace /\s\+$\| \+\ze\t/
+"python semicolon
 hi PythonSemicolon ctermfg=1 guifg=red cterm=reverse
 au FileType python syntax match PythonSemicolon /\zs\(;*\s*;\+\)*\ze\s*$/
+"cursorline
 set cursorline
 hi CursorLine term=bold cterm=bold ctermbg=233
+"TODO
 hi TODOtext ctermfg=1 guifg=red cterm=reverse
 match TODOtext /TODO/
 
