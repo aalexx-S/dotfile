@@ -54,6 +54,9 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" YCM GetDoc shortcut
+map <C-d> :YcmCompleter GetDoc<ENTER>
+
 "vimrc start
 set bs=2
 set tabstop=4
@@ -63,6 +66,7 @@ set ai si relativenumber number smarttab
 set history=50
 set scrolloff=4
 set ruler
+set splitbelow
 
 "folding
 setlocal foldmethod=indent
