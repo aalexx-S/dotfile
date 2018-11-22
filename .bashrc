@@ -34,7 +34,7 @@ source ~/.bash_git
 
 function beep() {
 	while /bin/true;
-		do echo -e "\a";
+		do echo -ne "\a";
 	done
 }
 
