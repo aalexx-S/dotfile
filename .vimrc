@@ -20,6 +20,13 @@ Plugin 'VundleVim/Vundle.vim'
 " plugin on GitHub repo
 " ex: Plugin 'tpope/vim-fugitive'
 Plugin 'ntpeters/vim-better-whitespace'
+" linting engin
+Plugin 'w0rp/ale'
+" better status bar
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+" base16 color theme
+Plugin 'ashfinal/vim-colors-violet'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " ex: Plugin 'L9'
@@ -60,6 +67,22 @@ map <C-d> :YcmCompleter GetDoc<ENTER>
 
 " better white spaces
 let g:better_whitespace_enabled=1
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+let g:airline_symbols.linenr = '»'
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#whitespace#enabled = 0
+
+" ale setting
+let g:ale_sign_column_always = 1
+let g:ale_set_highlights = 0
+let b:ale_linters = {
+			\'javascript': ['jshint']
+			\}
+	"quick navigation
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 "vimrc start
 set bs=2
@@ -107,9 +130,10 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 set t_Co=256
 syntax on
 set encoding=utf-8
-colorscheme maroloccio
+colorscheme violet
 set background=dark
 hi Normal ctermbg=black
+hi Folded ctermbg=235
 "python semicolon
 hi PythonSemicolon ctermfg=1 guifg=red cterm=reverse
 au FileType python syntax match PythonSemicolon /\zs\(;*\s*;\+\)*\ze\s*$/
