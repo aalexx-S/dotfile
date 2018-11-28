@@ -67,18 +67,26 @@ map <C-d> :YcmCompleter GetDoc<ENTER>
 
 " better white spaces
 let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+let g:better_whitespace_ctermcolor=23
+
+" airline
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
 let g:airline_symbols.linenr = '»'
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
+set ttimeoutlen=50
 
 " ale setting
 let g:ale_sign_column_always = 1
 let g:ale_set_highlights = 0
+let g:ale_python_pylint_auto_pipenv = 2
+"let g:ale_python_pylint_options = "--init-hook import os; act = os.path.join(os.environ['VIRTUAL_ENV'], 'bin', 'activate_this.py');exec(open(act).read(), {'__afile__': act})"
 let b:ale_linters = {
-			\'javascript': ['jshint']
+			\'javascript': ['jshint'],
+			\'python': ['pylint']
 			\}
 	"quick navigation
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -140,9 +148,6 @@ au FileType python syntax match PythonSemicolon /\zs\(;*\s*;\+\)*\ze\s*$/
 "cursorline
 set cursorline
 hi CursorLine term=bold cterm=bold ctermbg=233
-"TODO
-hi TODOtext ctermfg=1 guifg=red cterm=reverse
-match TODOtext /TODO/
 
 "Set cursor
 "For cygwin
