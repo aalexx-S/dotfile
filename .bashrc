@@ -1,6 +1,6 @@
 unameOut="$(uname -s)"
 case "${unameOut}" in
-    Linux*)     
+    Linux*)
 		if grep -q Microsoft /proc/version; then
 			machine=WSL
 		else
@@ -17,7 +17,8 @@ if [[ $- == *i* ]]; then
 	echo "Machine=${machine}"
 fi
 
-export LANG=zh_TW.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 alias cd..="cd .."
 alias sl="sl -e"
@@ -70,6 +71,12 @@ function open() {
 }
 
 # virtualenv activate
+function prp() {
+	command pipenv run python $@
+}
+
+# virtualenv activate
+# consider use pipenv
 function activate() {
 	if [[ $# -eq 1 ]] ; then
 		command source "$@"/bin/activate
