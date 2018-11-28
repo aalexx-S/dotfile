@@ -1,0 +1,19 @@
+[MASTER]
+init-hook='import os; act = os.path.join(os.environ['VIRTUAL_ENV'], 'bin', 'activate_this.py');exec(open(act).read(), {'__file__': act})'
+
+[MESSAGES CONTROL]
+disable=
+	no-member,
+	attribute-defined-outside-init,
+	duplicate-code,
+	fixme,
+	missing-docstring,
+	protected-access,
+	invalid-name,
+	too-few-public-methods,
+	too-many-statements,
+	too-many-branches,
+	too-many-locals
+
+[FORMAT]
+max-line-length=256
