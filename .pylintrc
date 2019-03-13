@@ -1,5 +1,5 @@
 [MASTER]
-init-hook='import os; act = os.path.join(os.environ['VIRTUAL_ENV'], 'bin', 'activate_this.py');exec(open(act).read(), {'__file__': act})'
+init-hook='import os; venv = os.getenv('VIRTUAL_ENV', ''); act = os.path.join(venv, 'bin', 'activate_this.py'); exec_str = "if venv != '': exec(open(act).read(), {'__file__': act})"; exec(exec_str)'
 
 [MESSAGES CONTROL]
 disable=
