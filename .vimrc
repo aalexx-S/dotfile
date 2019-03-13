@@ -98,7 +98,7 @@ set bs=2
 set tabstop=4
 set softtabstop=0
 set shiftwidth=4
-set ai si relativenumber number smarttab
+set ai relativenumber number smarttab
 set history=50
 set scrolloff=4
 set ruler
@@ -125,8 +125,6 @@ au FocusLost * :set number
 au FocusGained * :set relativenumber
 au InsertEnter * :set number
 au InsertLeave * :set relativenumber
-
-"c, cpp coding
 
 "python
 "If you prefer the Omni-Completion tip window to close when a selection is
