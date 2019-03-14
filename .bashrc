@@ -85,25 +85,34 @@ function activate() {
 	fi
 }
 
-# hhighlighter setup
-# download ack if not exist
-if [[ ! -f ~/bin/ack ]] ; then
-	echo "Downloading ack, a better grep tool."
+# download h if not exist
+if [[ ! -f ~/h.sh ]] ; then
+	echo "Downloading h, a better grep highlighter tool build on ack."
 	set -x
-	mkdir -p ~/bin/
-	curl https://beyondgrep.com/ack-2.16-single-file > ~/bin/ack && chmod 0755 ~/bin/ack
+	curl https://raw.githubusercontent.com/dczhu/mch/master/h > ~/h.sh
 	{ set +x; } 2>/dev/null
 fi
-# download hhighlighter if not exist
-if [[ ! -f ~/hhighlighter.sh ]] ; then
-	echo "Downloading hhighlighter, a better grep tool build on ack."
-	set -x
-	curl https://raw.githubusercontent.com/paoloantinori/hhighlighter/b9c90bd100e68cb3e22d652200c200431ded9069/h.sh > ~/hhighlighter.sh
-	{ set +x; } 2>/dev/null
-fi
-# load hhighlighter script
-source ~/hhighlighter.sh
+source ~/h.sh
 
+# download cxpgrep if not exist
+if [[ ! -f ~/cxpgrep.sh ]] ; then
+	echo "Downloading cxpgrep, a grep wrapper."
+	set -x
+	curl https://raw.githubusercontent.com/dczhu/cxpgrep/master/cxpgrep > ~/cxpgrep.sh
+	{ set +x; } 2>/dev/null
+fi
+source ~/cxpgrep.sh
+
+# download ltcd if not exist
+if [[ ! -f ~/ltcd.sh ]] ; then
+	echo "Downloading ltcd, a cd wrapper."
+	set -x
+	curl https://raw.githubusercontent.com/dczhu/ltcd/master/ltcd > ~/ltcd.sh
+	{ set +x; } 2>/dev/null
+fi
+source ~/ltcd.sh
+
+# Platform related stuff
 # Platform related stuff
 if [ "$machine" == "MSYS" ]; then
 	#MSYS2
