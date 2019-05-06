@@ -80,8 +80,9 @@ let g:airline#extensions#whitespace#enabled = 0
 set ttimeoutlen=50
 
 " ale setting
-let g:ale_sign_column_always = 0
-let g:ale_lint_on_text_changed = 'never'
+let g:ale_sign_column_always = 1
+let g:ale_lint_on_text_changed = 'always'
+let g:ale_lint_delay = 500
 let g:ale_set_highlights = 0
 let g:ale_python_pylint_auto_pipenv = 2
 "let g:ale_python_pylint_options = "--init-hook import os; act = os.path.join(os.environ['VIRTUAL_ENV'], 'bin', 'activate_this.py');exec(open(act).read(), {'__afile__': act})"
@@ -103,13 +104,13 @@ set history=50
 set scrolloff=4
 set ruler
 set splitbelow
+set showcmd
+set hlsearch
+" clear search highlight with <Esc>
+nnoremap <esc> :noh<return><esc>
 
 "folding
 setlocal foldmethod=indent
-
-"insert new line in normal mode
-nmap <S-Enter> O<Esc>
-nmap <CR> o<Esc>
 
 "Habit making... disable cursor key
 noremap <Up> <NOP>
