@@ -107,7 +107,12 @@ set splitbelow
 set showcmd
 set hlsearch
 " clear search highlight with <Esc>
-nnoremap <esc> :noh<return><esc>
+" nnoremap <esc> :noh<return><esc>
+set wildmenu
+set wildmode=list:longest
+set ignorecase smartcase
+let mapleader = ","
+nnoremap <leader><space> :noh<cr>
 
 "folding
 setlocal foldmethod=indent
