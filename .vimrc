@@ -153,22 +153,12 @@ au FileType python syntax match PythonSemicolon /\zs\(;*\s*;\+\)*\ze\s*$/
 "cursorline
 set cursorline
 hi CursorLine term=bold cterm=bold ctermbg=233
+" Line number
+hi LineNr ctermfg=241
 
 "Set cursor
-"For cygwin
-if has("win32unix")
-	let &t_ti.="\e[1 q"
-	let &t_SI.="\e[5 q"
-	let &t_EI.="\e[1 q"
-	let &t_te.="\e[0 q"
-else
-	highlight Cursor guifg=white guibg=black
-	highlight iCursor guifg=white guibg=steelblue
-	set guicursor=n-v-c:block-Cursor
-	set guicursor+=i:ver100-iCursor
-	set guicursor+=n-v-c:blinkon0
-	set guicursor+=i:blinkwait10
-endif
+highlight Cursor guifg=white guibg=black
+highlight iCursor guifg=white guibg=steelblue
 
 "python syntax
 au FileType python set expandtab
