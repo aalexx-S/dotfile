@@ -31,6 +31,11 @@ alias cls="clear"
 #thefuck
 #eval "$(thefuck --alias)"
 
+# remove old vim undo files
+# when last edit is over 45 days ago
+find ~/.vim/undo -type f -mtime +45 -delete
+
+# setup git information
 source ~/.bash_git
 
 function beep() {

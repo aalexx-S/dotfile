@@ -109,6 +109,18 @@ set splitbelow
 set showcmd
 set hlsearch
 
+" set undo file
+if !isdirectory($HOME."/.vim")
+    call mkdir($HOME."/.vim", "", 0770)
+endif
+if !isdirectory($HOME."/.vim/undo")
+    call mkdir($HOME."/.vim/undo", "", 0770)
+endif
+set undofile
+set undodir=~/.vim/undo
+set undolevels=1000 " how many undos
+set undoreload=10000 " lines of undos
+
 " clear search highlight with <Esc>
 " nnoremap <esc> :noh<return><esc>
 set wildmenu
