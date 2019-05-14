@@ -25,6 +25,8 @@ Plugin 'w0rp/ale'
 " better status bar
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+" buffer explorer
+Plugin 'jlanzarotta/bufexplorer'
 " base16 color theme
 Plugin 'ashfinal/vim-colors-violet'
 
