@@ -63,7 +63,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " YCM GetDoc shortcut
-map <C-d> :YcmCompleter GetDoc<ENTER>
+map <leader><d> :YcmCompleter GetDoc<ENTER>
 
 " better white spaces
 let g:better_whitespace_enabled=1
@@ -106,13 +106,59 @@ set ruler
 set splitbelow
 set showcmd
 set hlsearch
+
 " clear search highlight with <Esc>
 " nnoremap <esc> :noh<return><esc>
 set wildmenu
 set wildmode=list:longest
 set ignorecase smartcase
-let mapleader = ","
+
+" Reset the leader key, default is '\'
+" let mapleader = ","
 nnoremap <leader><space> :noh<cr>
+
+" set up for buffer usage
+set hidden
+
+" tabe labels setting
+fu! MyTabLabel(n)
+	let buflist = tabpagebuflist(a:n)
+	" append file name
+	let winnr = tabpagewinnr(a:n)
+	let name = fnamemodify(bufname(buflist[winnr - 1]), ':t')
+	let s = empty(name) ? '[unnamed]' : name
+	" Add '+' if one of the buffers in the tab page is modified
+	for bufnr in buflist
+		if getbufvar(bufnr, "&modified")
+			let s .= '[+]'
+		  	break
+		endif
+	endfor
+	return s
+endfu
+fu! MyTabLine()
+	let s = ''
+	for i in range(tabpagenr('$'))
+	" select the highlighting
+		if i + 1 == tabpagenr()
+			let s .= '%#TabLineSel#'
+		else
+			let s .= '%#TabLine#'
+		endif
+
+		" display tabnumber (for use with <count>gt, etc)
+		let s .= ' ('. (i+1) . ') '
+
+		" the label is made by MyTabLabel()
+		let s .= '%{MyTabLabel(' . (i + 1) . ')}'
+
+		if i+1 < tabpagenr('$')
+			let s .= ' '
+		endif
+	endfor
+	return s
+endfu
+set tabline=%!MyTabLine()
 
 "folding
 setlocal foldmethod=indent
@@ -155,6 +201,10 @@ set cursorline
 hi CursorLine term=bold cterm=bold ctermbg=233
 " Line number
 hi LineNr ctermfg=241
+" tabe color
+hi TabLineSel ctermfg=251 ctermbg=30
+hi TabLine ctermfg=251 ctermbg=241
+hi TabLineFill ctermbg=241
 
 "Set cursor
 highlight Cursor guifg=white guibg=black
