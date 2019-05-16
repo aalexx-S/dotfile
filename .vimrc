@@ -66,6 +66,8 @@ filetype plugin indent on    " required
 
 " YCM GetDoc shortcut
 map <leader><d> :YcmCompleter GetDoc<ENTER>
+" YCM setting
+let g:ycm_seed_identifiers_with_syntax = 1
 
 " better white spaces
 let g:better_whitespace_enabled=1
@@ -84,7 +86,6 @@ set ttimeoutlen=50
 " ale setting
 let g:ale_sign_column_always = 1
 let g:ale_lint_on_text_changed = 'always'
-let g:ale_lint_delay = 500
 let g:ale_set_highlights = 0
 let g:ale_python_pylint_auto_pipenv = 2
 "let g:ale_python_pylint_options = "--init-hook import os; act = os.path.join(os.environ['VIRTUAL_ENV'], 'bin', 'activate_this.py');exec(open(act).read(), {'__afile__': act})"
@@ -124,7 +125,7 @@ set undoreload=10000 " lines of undos
 " clear search highlight with <Esc>
 " nnoremap <esc> :noh<return><esc>
 set wildmenu
-set wildmode=list:longest
+set wildmode=longest,list,full
 set ignorecase smartcase
 
 " Reset the leader key, default is '\'
