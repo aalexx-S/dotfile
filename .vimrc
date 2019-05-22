@@ -65,9 +65,10 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " YCM GetDoc shortcut
-map <leader><d> :YcmCompleter GetDoc<ENTER>
+map <leader>d :YcmCompleter GetDoc<CR>
 " YCM setting
 let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_key_detailed_diagnostics = ''
 
 " better white spaces
 let g:better_whitespace_enabled=1
@@ -130,7 +131,7 @@ set ignorecase smartcase
 
 " Reset the leader key, default is '\'
 " let mapleader = ","
-nnoremap <leader><space> :noh<cr>
+nnoremap <leader><space> :noh<cr> <bar> :pclose<CR>
 
 " set up for buffer usage
 set hidden
