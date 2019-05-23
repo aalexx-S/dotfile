@@ -131,7 +131,7 @@ set ignorecase smartcase
 
 " Reset the leader key, default is '\'
 " let mapleader = ","
-nnoremap <leader><space> :noh<cr> <bar> :pclose<CR>
+nnoremap <leader><space> :noh <bar> :pclose<cr>
 
 " set up for buffer usage
 set hidden
