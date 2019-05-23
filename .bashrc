@@ -20,17 +20,6 @@ fi
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-alias cd..="cd .."
-alias sl="sl -e"
-alias ls="ls --color=auto"
-alias ll="ls -l --color=auto"
-alias l="ls"
-alias rm="rm -i"
-alias cls="clear"
-
-#thefuck
-#eval "$(thefuck --alias)"
-
 # remove old vim undo files
 # when last edit is over 45 days ago
 find ~/.vim/undo -type f -mtime +45 -delete
@@ -205,18 +194,22 @@ function parse_current_directory(){
 	if [[ $cur == "~" ]] ; then
 		cur="~/"
 	fi
-	echo -e "\033[38;5;26m${cur%/*}/\e[38;5;208m${cur##*/}"
+	echo -e "\033[38;5;39m${cur%/*}/\e[38;5;208m${cur##*/}"
 }
 
 function virtualenv_check(){
 	if [[ "$VIRTUAL_ENV" != "" ]] ; then
-		echo -e "\033[01;32m(virtualenv: ${VIRTUAL_ENV##*/})"
+		echo -e "\e[38;5;185m(virtualenv: ${VIRTUAL_ENV##*/})"
 	fi
+}
+
+function user_check(){
+	echo -e "\e[38;5;150m"
 }
 
 # Bash prompt magic
 function set_bash_prompt() {
-	PS1='\n \[\e[38;5;26m\]\d \[\e[00;36m\][ \t ]\n \[\e[36m\][\!] ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u @ \h\[\033[00m\]: $(parse_current_directory) $(virtualenv_check)\[\e[0m\]\[\033[00m\]\n\[\033[1;31m\]$(__git_ps1)$(git_stash_check_current_branch)\[\033[00m\] \$ '
+	PS1='\n \[\e[38;5;39m\]\d \[\e[38;5;36m\][ \t ] $(virtualenv_check)\n \[\e[38;5;36m\][\!] ${debian_chroot:+($debian_chroot)} $(user_check)\u @ \h\[\033[00m\]: $(parse_current_directory) \[\e[0m\]\[\033[00m\]\n\[\033[38;5;208m\]$(__git_ps1)$(git_stash_check_current_branch)\[\033[00m\] \$ '
 }
 
 if [ "$color_prompt" = yes ]; then
@@ -225,6 +218,12 @@ else
     PS1='\n${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
+
+# ls colors
+if [[ ! -f ~/.dircolors ]] ; then
+	curl https://raw.githubusercontent.com/aalexx-S/dircolors-solarized/master/dircolors.256dark > ~/.dircolors
+fi
+eval $(dircolors ~/.dircolors)
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -235,31 +234,13 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
