@@ -111,6 +111,9 @@ set splitbelow
 set showcmd
 set hlsearch
 
+" autosave on swtich buffer
+set autowrite
+
 " set undo file
 if !isdirectory($HOME."/.vim")
     call mkdir($HOME."/.vim", "", 0770)
