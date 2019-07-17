@@ -92,7 +92,9 @@ let g:ale_python_pylint_auto_pipenv = 2
 "let g:ale_python_pylint_options = "--init-hook import os; act = os.path.join(os.environ['VIRTUAL_ENV'], 'bin', 'activate_this.py');exec(open(act).read(), {'__afile__': act})"
 let b:ale_linters = {
 			\'javascript': ['jshint'],
-			\'python': ['pylint']
+			\'python': ['pylint'],
+			\'latex': ['write-good'],
+			\'markdown': ['write-good'],
 			\}
 	"quick navigation
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -111,8 +113,11 @@ set splitbelow
 set showcmd
 set hlsearch
 
+" pasting from outside (with shift-insert)
+map <leader>p :r!cat<CR>
+
 " autosave on swtich buffer
-set autowrite
+set autowriteall
 
 " set undo file
 if !isdirectory($HOME."/.vim")
@@ -126,8 +131,6 @@ set undodir=~/.vim/undo
 set undolevels=1000 " how many undos
 set undoreload=10000 " lines of undos
 
-" clear search highlight with <Esc>
-" nnoremap <esc> :noh<return><esc>
 set wildmenu
 set wildmode=longest,list,full
 set ignorecase smartcase
