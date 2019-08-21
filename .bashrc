@@ -64,7 +64,13 @@ function open() {
 	fi
 }
 
+function rswp() {
+	rm -f ./.*.swp
+}
+
 # virtualenv activate
+# pipenv
+eval "$(pipenv --completion)"
 function prp() {
 	command pipenv run python $@
 }

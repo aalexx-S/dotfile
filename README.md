@@ -2,6 +2,40 @@
 
 Dotfiles, also include some vim related files.
 
+# Bash features and commands
+
+Some self-defined functions and features.
+
+### commands
+
+### git
+
+* git branch --show-description
+
+* git log -o / git log -og
+
+### open
+
+Open a file.
+
+Since windows does not know what to do with markdown, it is manually opened in the function.
+
+### rswp
+
+Remove .*.swp files in the current directory.
+
+### activate (Switch to pipenv)
+
+Source activate file for python virtualenv. Switch to pipenv instead.
+
+### h
+
+Highlight tool.
+
+### cd
+
+Ltcd. Use ```cd --``` to select and ```cd -n``` to go to last n dir.
+
 # Vimrc features and commands
 
 Use Vundle as plugin manager.
