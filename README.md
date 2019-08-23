@@ -46,11 +46,22 @@ If it hangs on YCM, kill the job, and goto YCM folder under vundle folder in .vi
 
 After executing install.py, try again.
 
+### Jedi-Vim
+
+Auto completion tool better than ycm.
+
+- &lt;C-Space>: auto complete. Enter to select.
+
+- &lt;leader>d: goto definition.
+
+- &lt;leader>n: show all usage.
+
+- &lt;leader>k: show document.
+
+
 ### &lt;leader> command
 
 "Leader" is set to '\\'.
-
-- &lt;leader>d: YcmCompleter GetDoc.
 
 - &lt;leader>&lt;space>: noh & pclose.
 

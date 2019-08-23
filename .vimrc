@@ -29,6 +29,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jlanzarotta/bufexplorer'
 " base16 color theme
 Plugin 'ashfinal/vim-colors-violet'
+" jedi vim
+Plugin 'davidhalter/jedi-vim'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " ex: Plugin 'L9'
@@ -37,7 +39,7 @@ Plugin 'ashfinal/vim-colors-violet'
 " ex: Plugin 'git://git.wincent.com/command-t.git'
 if ! has ("win32") && ! has ("win32unix")
 	" windows and all the stuff under windows shouldn't use thess
-	Plugin 'Valloric/YouCompleteMe'
+	" Plugin 'Valloric/YouCompleteMe'
 endif
 " git repos on your local machine (i.e. when working on your own plugin)
 " ex: Plugin 'file:///home/gmarik/path/to/plugin'
@@ -65,10 +67,14 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " YCM GetDoc shortcut
-map <leader>d :YcmCompleter GetDoc<CR>
+" map <leader>d :YcmCompleter GetDoc<CR>
 " YCM setting
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_key_detailed_diagnostics = ''
+" let g:ycm_seed_identifiers_with_syntax = 1
+" let g:ycm_key_detailed_diagnostics = ''
+
+" Jedi-vim setting
+let g:jedi#documentation_command=''
+map <leader>k :call jedi#show_documentation()<CR>
 
 " better white spaces
 let g:better_whitespace_enabled=1
