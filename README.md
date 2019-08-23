@@ -70,8 +70,6 @@ The following program need to be installed for ale to work.
 
 - python: pylint
 
-- markdown & latex: write-good (npm install)
-
 ### Ctrl-p
 
 - Markdown: save the file and execute ```open %```. In windows WSL, since markdown file cannot be associate with any program, bash will use chrome instead.

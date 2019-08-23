@@ -93,8 +93,6 @@ let g:ale_python_pylint_auto_pipenv = 2
 let b:ale_linters = {
 			\'javascript': ['jshint'],
 			\'python': ['pylint'],
-			\'latex': ['write-good'],
-			\'markdown': ['write-good'],
 			\}
 	"quick navigation
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
