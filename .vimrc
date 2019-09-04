@@ -142,6 +142,8 @@ set ignorecase smartcase
 " Reset the leader key, default is '\'
 " let mapleader = ","
 nnoremap <leader><space> :noh <bar> :pclose<cr>
+" place cursor to the character after search pattern
+nnoremap <leader>e gn<Esc>l
 
 " set up for buffer usage
 set hidden
@@ -210,6 +212,9 @@ au InsertLeave * :set relativenumber
 " insert mode
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+"python syntax
+""au FileType python set tw=79 cc=+1
+
 
 "Display
 set t_Co=256
@@ -235,10 +240,6 @@ hi TabLineFill ctermbg=241
 "Set cursor
 highlight Cursor guifg=white guibg=black
 highlight iCursor guifg=white guibg=steelblue
-
-"python syntax
-au FileType python set expandtab
-""au FileType python set tw=79 cc=+1
 
 "git commit message shouldn't be too long
 au FileType gitcommit set tw=72 cc=+1
