@@ -20,6 +20,10 @@ fi
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+# Change vim to default editor
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 # remove old vim undo files
 # when last edit is over 45 days ago
 find ~/.vim/undo -type f -mtime +45 -delete
@@ -215,7 +219,7 @@ function user_check(){
 
 function error_check(){
 	if [[ $__MY_EXIT -gt 127 ]] ; then
-		echo -e "\e[38;5;208m[$__MY_EXIT:$(kill -l $(($__MY_EXIT-128)))]"
+		echo -e "\e[38;5;208m[SIG:$(kill -l $(($__MY_EXIT-128)))]"
 	elif [[ $__MY_EXIT -ne 0 ]] ; then
 		echo -e "\e[1;38;5m[ERR:$__MY_EXIT]"
 	fi
