@@ -31,6 +31,8 @@ Plugin 'jlanzarotta/bufexplorer'
 Plugin 'ashfinal/vim-colors-violet'
 " jedi vim
 Plugin 'davidhalter/jedi-vim'
+" The Nerdtree
+Plugin 'scrooloose/nerdtree'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " ex: Plugin 'L9'
@@ -65,6 +67,8 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+"vimrc start
 
 " YCM GetDoc shortcut
 " map <leader>d :YcmCompleter GetDoc<CR>
@@ -104,7 +108,16 @@ let b:ale_linters = {
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-"vimrc start
+" Nerdtree
+" Open nerdtree if no file on opening vim
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Open nerdtree if vim open with directory instead of file
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+" Close vim if the only window left is nerdtree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 set bs=2
 set tabstop=4
 set softtabstop=0
@@ -116,9 +129,6 @@ set ruler
 set splitbelow
 set showcmd
 set hlsearch
-
-" pasting from outside (with shift-insert)
-map <leader>p :r!cat<CR>
 
 " autosave on swtich buffer
 set autowriteall
@@ -144,6 +154,13 @@ set ignorecase smartcase
 nnoremap <leader><space> :noh <bar> :pclose<cr>
 " place cursor to the character after search pattern
 nnoremap <leader>e gn<Esc>l
+" pasting from outside (with shift-insert)
+nnoremap <leader>p :set invpaste paste?<CR>
+" Open nerdtree
+nnoremap <leader>n :NERDTreeToggle<CR>
+
+" Quick command from insert mode
+imap <C-\> <C-O>
 
 " set up for buffer usage
 set hidden
