@@ -72,6 +72,12 @@ function rswp() {
 	rm -f ./.*.swp
 }
 
+# mkdir & cd
+function mkcd() {
+	command mkdir -p -- "$1"
+	command cd -P -- "$1"
+}
+
 # virtualenv activate
 # pipenv
 eval "$(pipenv --completion)"
