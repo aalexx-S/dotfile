@@ -36,6 +36,10 @@ Highlight tool.
 
 Ltcd. Use ```cd --``` to select and ```cd -n``` to go to last n dir.
 
+### mkcd
+
+Combined mkdir and cd.
+
 # Vimrc features and commands
 
 Use Vundle as plugin manager.
@@ -65,9 +69,14 @@ Auto completion tool better than ycm.
 
 - &lt;leader>&lt;space>: noh & pclose.
 
-- &lt;leader>p: r!cat. This enable pasting with shift-insert. Press ctrl-d (eof) after pasting.
+- &lt;leader>p: toggle paste mode.
+	- Notice that when paste is on, all the mapping in insert mode will be temporary disabled.
 
 - &lt;leader>bt: toggle buffer explorer window. (Added by bufexplorer.)
+
+Ctrl:
+
+- [insert mode] ctrl + \: map to ctrl + O. For quick commands in insert mode.
 
 ### Ale
 
