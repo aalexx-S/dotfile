@@ -253,6 +253,9 @@ hi LineNr ctermfg=241
 hi TabLineSel ctermfg=251 ctermbg=30
 hi TabLine ctermfg=251 ctermbg=241
 hi TabLineFill ctermbg=241
+" jedi parameter suggestion
+hi jediFunction ctermfg=251 ctermbg=236
+hi jediFat term=bold,underline cterm=bold,underline ctermbg=236
 
 "Set cursor
 highlight Cursor guifg=white guibg=black
