@@ -123,7 +123,6 @@ fi
 source ~/ltcd.sh
 
 # Platform related stuff
-# Platform related stuff
 if [ "$machine" == "MSYS" ]; then
 	#MSYS2
 	export PATH=$PATH:/${JAVA_HOME//+([:\\])//}/bin
@@ -225,9 +224,9 @@ function user_check(){
 
 function error_check(){
 	if [[ $__MY_EXIT -gt 127 ]] ; then
-		echo -e "\e[38;5;208m[SIG:$(kill -l $(($__MY_EXIT-128)))]"
+		echo -e "\e[38;5;208m[SIG:$(kill -l $(($__MY_EXIT-128)))] "
 	elif [[ $__MY_EXIT -ne 0 ]] ; then
-		echo -e "\e[1;38;5m[ERR:$__MY_EXIT]"
+		echo -e "\e[1;38;5m[ERR:$__MY_EXIT] "
 	fi
 }
 
@@ -235,7 +234,7 @@ function error_check(){
 function set_bash_prompt() {
 	__MY_EXIT=$? #Save last exit code
 
-	PS1='\n \[\e[38;5;39m\]\d \[\e[38;5;36m\][ \t ] $(virtualenv_check)\n \[\e[38;5;36m\][\!] ${debian_chroot:+($debian_chroot)} $(user_check)\u @ \h\[\033[00m\]: $(parse_current_directory) \[\e[0m\]\[\033[00m\]\n\[\033[1;38;5;196m\]$(__git_ps1)$(git_stash_check_current_branch) $(error_check)\[\033[00m\] \$ '
+	PS1='\n \[\e[38;5;39m\]\d \[\e[38;5;36m\][ \t ] $(virtualenv_check)\n \[\e[38;5;36m\][\!] ${debian_chroot:+($debian_chroot)} $(user_check)\u @ \h\[\033[00m\]: $(parse_current_directory) \[\e[0m\]\[\033[00m\]\n\[\033[1;38;5;196m\]$(__git_ps1)$(git_stash_check_current_branch) $(error_check)\[\033[00m\]\$ '
 }
 
 if [ "$color_prompt" = yes ]; then
