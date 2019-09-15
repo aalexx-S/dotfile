@@ -8,6 +8,14 @@ Some self-defined functions and features.
 
 ### commands
 
+### v
+
+Readline programs now use vi mode!!
+
+Enter visual mode to open editor to edit command.
+
+This is the same as &lt;C-x>&lt;C-e>
+
 ### git
 
 * git branch --show-description
