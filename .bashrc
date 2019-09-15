@@ -80,7 +80,6 @@ function mkcd() {
 
 # virtualenv activate
 # pipenv
-eval "$(pipenv --completion)"
 function prp() {
 	command pipenv run python $@
 }
