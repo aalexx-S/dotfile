@@ -5,6 +5,7 @@ if [[ ! -f ~/h.sh ]] ; then
 	curl https://raw.githubusercontent.com/dczhu/mch/master/h > ~/h.sh
 	{ set +x; } 2>/dev/null
 fi
+
 # download cxpgrep if not exist
 if [[ ! -f ~/cxpgrep.sh ]] ; then
 	echo "Downloading cxpgrep, a grep wrapper."
@@ -12,6 +13,7 @@ if [[ ! -f ~/cxpgrep.sh ]] ; then
 	curl https://raw.githubusercontent.com/dczhu/cxpgrep/master/cxpgrep > ~/cxpgrep.sh
 	{ set +x; } 2>/dev/null
 fi
+
 # download ltcd if not exist
 if [[ ! -f ~/ltcd.sh ]] ; then
 	echo "Downloading ltcd, a cd wrapper."
@@ -19,3 +21,6 @@ if [[ ! -f ~/ltcd.sh ]] ; then
 	curl https://raw.githubusercontent.com/dczhu/ltcd/master/ltcd > ~/ltcd.sh
 	{ set +x; } 2>/dev/null
 fi
+
+# install node.js for Coc, vim completion engine
+curl -sL install-node.now.sh/lts | sudo bash
