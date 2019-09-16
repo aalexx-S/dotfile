@@ -15,8 +15,6 @@ call plug#begin('~/.vim/bundle')
 """ Make sure you use single quotes
 "" 1. Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'ntpeters/vim-better-whitespace'
-" linting engin
-Plug 'w0rp/ale'
 " better status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -26,9 +24,8 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'ashfinal/vim-colors-violet'
 " nerd tree
 Plug 'scrooloose/nerdtree'
-" jedi vim
-"Plug 'davidhalter/jedi-vim'
-
+" vimtex
+Plug 'lervag/vimtex'
 "" 2. Any valid git URL is allowed
 " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
@@ -84,8 +81,8 @@ inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <C-k> <Plug>(coc-diagnostic-prev)
+nmap <C-j> <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -94,7 +91,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
-nnoremap <leader>K :call <SID>show_documentation()<CR>
+nnoremap <leader>k :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -132,7 +129,6 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Create mappings for function text object, requires document symbols feature of languageserver.
-
 xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
@@ -173,17 +169,9 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+""""""""""""
 "vimrc start
-
-" YCM GetDoc shortcut
-" map <leader>d :YcmCompleter GetDoc<CR>
-" YCM setting
-" let g:ycm_seed_identifiers_with_syntax = 1
-" let g:ycm_key_detailed_diagnostics = ''
-
-" Jedi-vim setting
-"let g:jedi#documentation_command=''
-"map <leader>k :call jedi#show_documentation()<CR>
+""""""""""""
 
 " better white spaces
 let g:better_whitespace_enabled=1
@@ -197,21 +185,6 @@ endif
 let g:airline_symbols.linenr = '»'
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
-set ttimeoutlen=50
-
-" ale setting
-let g:ale_sign_column_always = 1
-let g:ale_lint_on_text_changed = 'always'
-let g:ale_set_highlights = 0
-let g:ale_python_pylint_auto_pipenv = 2
-"let g:ale_python_pylint_options = "--init-hook import os; act = os.path.join(os.environ['VIRTUAL_ENV'], 'bin', 'activate_this.py');exec(open(act).read(), {'__afile__': act})"
-let b:ale_linters = {
-			\'javascript': ['jshint'],
-			\'python': ['pylint'],
-			\}
-	"quick navigation
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " Nerdtree
 " Open nerdtree if no file on opening vim
@@ -223,6 +196,10 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 " Close vim if the only window left is nerdtree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+set ttimeoutlen=50
+set noshowmode
+set laststatus=0
+set cmdheight=1
 set bs=2
 set tabstop=4
 set softtabstop=0
@@ -358,9 +335,6 @@ hi LineNr ctermfg=241
 hi TabLineSel ctermfg=251 ctermbg=30
 hi TabLine ctermfg=251 ctermbg=241
 hi TabLineFill ctermbg=241
-" jedi parameter suggestion
-"hi jediFunction ctermfg=251 ctermbg=236
-"hi jediFat term=bold,underline cterm=bold,underline ctermbg=236
 
 "Set cursor
 highlight Cursor guifg=white guibg=black

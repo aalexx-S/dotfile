@@ -50,23 +50,27 @@ Combined mkdir and cd.
 
 # Vimrc features and commands
 
-Use Vundle as plugin manager.
+Use vim-plug as plugin manager.
 
-Run ``` vim +PluginInstall``` to install plugins and use ```vim +PluginUpdate``` to updates.
+Run ``` vim +PlugInstall``` to install plugins and use ```vim +PlugUpdate``` to updates.
 
-If it hangs on YCM, kill the job, and goto YCM folder under vundle folder in .vim and execute install.py.
+### CoC
 
-After executing install.py, try again.
+A really powerful autocompletion and linting engine.
 
-### Jedi-Vim
+- python: ```pip install jedi```
+- bash: ```npm i -g bash-language-server```
+- LaTeX: vimtex is needed.
 
-Auto completion tool better than ycm.
+Movement:
 
-- &lt;C-Space>: auto complete. Enter to select.
+- Ctrl-j: move to the next anchor.
 
-- &lt;leader>d: goto definition.
+- Ctrl-k: move to the previous anchor.
 
-- &lt;leader>n: show all usage.
+- gd: goto definition.
+
+- gr: show all usage (reference).
 
 - &lt;leader>k: show document.
 
@@ -86,11 +90,7 @@ Ctrl:
 
 - [insert mode] ctrl + \: map to ctrl + O. For quick commands in insert mode.
 
-### Ale
 
-- Ctrl-j: move to the next anchor.
-
-- Ctrl-k: move to the previous anchor.
 
 The following program need to be installed for ale to work.
 

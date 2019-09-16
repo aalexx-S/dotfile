@@ -39,6 +39,7 @@ source ~/ltcd.sh
 # my_functions
 source ~/my_functions.sh
 
+## PATH
 # Platform related stuff
 if [ "$machine" == "MSYS" ]; then
 	#MSYS2
