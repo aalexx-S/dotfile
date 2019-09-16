@@ -204,7 +204,7 @@ set bs=2
 set tabstop=4
 set softtabstop=0
 set shiftwidth=4
-set ai relativenumber number smarttab
+set ai smarttab
 set history=50
 set scrolloff=4
 set ruler
@@ -300,10 +300,11 @@ noremap <Right> <NOP>
 au FileType python set expandtab
 
 "Line number
-au FocusLost * :set number
-au FocusGained * :set relativenumber
-au InsertEnter * :set number
-au InsertLeave * :set relativenumber
+set nu rnu
+au FocusLost * :set nu nornu
+au FocusGained * :set nu rnu
+au InsertEnter * :set nu nornu
+au InsertLeave * :set nu rnu
 
 "python
 "If you prefer the Omni-Completion tip window to close when a selection is
@@ -351,11 +352,13 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 set shell=bash\ --login
 
 "markdown preview in web browser
-map <C-p> :call Markdown_preview()<Enter><C-l>
-func Markdown_preview()
+map <C-p> :call Preview_file()<Enter><C-l>
+func Preview_file()
 	exec 'w'
 	if &filetype=='markdown'
 		silent exec "!open %"
+	elseif &filetype=='tex'
+		silent exec "!open %<.pdf"
 	endif
 endfunc
 
@@ -365,6 +368,8 @@ func Compile()
 	exec 'w'
 	if &filetype=='c' || &filetype=='cpp'
 		exec "!g++ -Wall -std=c++11 % -o %<"
+	elseif &filetype=='tex'
+		exec "!xelatex %"
 	else
 		echo "Unsupported filetype."
 	endif
