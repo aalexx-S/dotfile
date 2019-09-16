@@ -31,95 +31,13 @@ find ~/.vim/undo -type f -mtime +45 -delete
 # setup git information
 source ~/.bash_git
 
-function beep() {
-	while /bin/true;
-		do echo -ne "\a";
-	done
-}
-
-function git() {
-	if [[ $@ == "branch --show-description" ]]; then
-		bash ~/.git_show_description.sh
-	elif [[ $@ == "log -o" ]]; then
-		command git log --oneline
-	elif [[ $@ == "log -og" ]]; then
-		command git log --oneline --graph
-	else
-		command git "$@"
-	fi
-}
-
-function open() {
-	if [[ $machine == "WSL" ]]; then
-		if [[ $@ == "" ]]; then
-			echo "Nothing to open!!"
-			return
-		fi
-		# set default program for markdown
-		if [[ $@ == *.md ]]; then
-			# prepend chrome to the argument
-			# use chrome to open .md files.
-			command set -- chrome "$@"
-		fi
-		command cmd.exe /c start "$@"
-	else
-
-		command xdg-open "$@"
-	fi
-}
-
-function rswp() {
-	rm -f ./.*.swp
-}
-
-# mkdir & cd
-function mkcd() {
-	command mkdir -p -- "$1"
-	command cd -P -- "$1"
-}
-
-# virtualenv activate
-# pipenv
-function prp() {
-	command pipenv run python $@
-}
-
-# virtualenv activate
-# consider use pipenv
-function activate() {
-	if [[ $# -eq 1 ]] ; then
-		command source "$@"/bin/activate
-	else
-		command activate "$@"
-	fi
-}
-
-# download h if not exist
-if [[ ! -f ~/h.sh ]] ; then
-	echo "Downloading h, a better grep highlighter tool build on ack."
-	set -x
-	curl https://raw.githubusercontent.com/dczhu/mch/master/h > ~/h.sh
-	{ set +x; } 2>/dev/null
-fi
+## source functions
+# execute setup.sh if error
 source ~/h.sh
-
-# download cxpgrep if not exist
-if [[ ! -f ~/cxpgrep.sh ]] ; then
-	echo "Downloading cxpgrep, a grep wrapper."
-	set -x
-	curl https://raw.githubusercontent.com/dczhu/cxpgrep/master/cxpgrep > ~/cxpgrep.sh
-	{ set +x; } 2>/dev/null
-fi
 source ~/cxpgrep.sh
-
-# download ltcd if not exist
-if [[ ! -f ~/ltcd.sh ]] ; then
-	echo "Downloading ltcd, a cd wrapper."
-	set -x
-	curl https://raw.githubusercontent.com/dczhu/ltcd/master/ltcd > ~/ltcd.sh
-	{ set +x; } 2>/dev/null
-fi
 source ~/ltcd.sh
+# my_functions
+source ~/my_functions.sh
 
 # Platform related stuff
 if [ "$machine" == "MSYS" ]; then
