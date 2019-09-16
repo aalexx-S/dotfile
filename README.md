@@ -48,7 +48,15 @@ Ltcd. Use ```cd --``` to select and ```cd -n``` to go to last n dir.
 
 Combined mkdir and cd.
 
+### vread
+
+Cat a file from ~/templates/.
+
+Call this in vim ```:r!vread <file>``` to insert.
+
 # Vimrc features and commands
+
+Remember to copy all the content from .vim.
 
 Use vim-plug as plugin manager.
 
@@ -58,9 +66,10 @@ Run ``` vim +PlugInstall``` to install plugins and use ```vim +PlugUpdate``` to 
 
 A really powerful autocompletion and linting engine.
 
-- python: ```pip install jedi```
+- python: ```pip install jedi pylint --user```
 - bash: ```npm i -g bash-language-server```
-- LaTeX: vimtex is needed.
+	- May encounter permission issue due to WSL 1.
+- LaTeX: vimtex is needed. Already in .vimrc.
 
 Movement:
 
@@ -75,7 +84,7 @@ Movement:
 - &lt;leader>k: show document.
 
 
-### &lt;leader> command
+### Other custom commands
 
 "Leader" is set to '\\'.
 
@@ -91,13 +100,12 @@ Ctrl:
 - [insert mode] ctrl + \: map to ctrl + O. For quick commands in insert mode.
 
 
+### F9 compile
 
-The following program need to be installed for ale to work.
-
-- javascript: jshint (npm install)
-
-- python: pylint
+- c/cpp: save the file and compile with gcc/g++
+- LaTeX: save the file and compile with xelatex
 
 ### Ctrl-p
 
 - Markdown: save the file and execute ```open %```. In windows WSL, since markdown file cannot be associate with any program, bash will use chrome instead.
+- LaTeX: save the file and open pdf with the same name.
