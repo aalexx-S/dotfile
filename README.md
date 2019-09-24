@@ -70,6 +70,7 @@ A really powerful autocompletion and linting engine.
 - bash: ```npm i -g bash-language-server```
 	- May encounter permission issue due to WSL 1.
 - LaTeX: vimtex is needed. Already in .vimrc.
+- text: language tool. check ```https://github.com/languagetool-org/languagetool```
 
 Movement:
 
