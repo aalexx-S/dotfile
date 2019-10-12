@@ -80,7 +80,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Use `[g` and `]g` to navigate diagnostics
+" Use `C-g` and `C-g` to navigate diagnostics
 nmap <C-k> <Plug>(coc-diagnostic-prev)
 nmap <C-j> <Plug>(coc-diagnostic-next)
 
@@ -289,6 +289,7 @@ set tabline=%!MyTabLine()
 
 "folding
 setlocal foldmethod=indent
+autocmd FileType python set foldignore=
 
 "Habit making... disable cursor key
 noremap <Up> <NOP>
