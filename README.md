@@ -84,6 +84,11 @@ Movement:
 
 - &lt;leader>k: show document.
 
+### vim surround
+
+### vim sort
+
+- gsip to sort those python imports
 
 ### Other custom commands
 

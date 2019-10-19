@@ -26,6 +26,11 @@ Plug 'ashfinal/vim-colors-violet'
 Plug 'scrooloose/nerdtree'
 " vimtex
 Plug 'lervag/vimtex'
+" vim-surround
+Plug 'tpope/vim-surround'
+" vim-sort
+Plug 'christoomey/vim-sort-motion'
+
 "" 2. Any valid git URL is allowed
 " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
