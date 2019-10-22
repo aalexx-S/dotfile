@@ -157,12 +157,20 @@ function set_bash_prompt() {
 	echo -en "\e[?25h"
 }
 
+# short prompt command
+function short_prompt() {
+    PS1='\n${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+}
+
 if [ "$color_prompt" = yes ]; then
 	PROMPT_COMMAND=set_bash_prompt
 else
     PS1='\n${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
+
+# toggle prompt command, focus mode!!
+alias prompttoggle='if test "$PROMPT_COMMAND" = "set_bash_prompt" ; then PROMPT_COMMAND="short_prompt" ; else PROMPT_COMMAND="set_bash_prompt" ; fi'
 
 # ls colors
 if [[ ! -f ~/.dircolors ]] ; then
