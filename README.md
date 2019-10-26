@@ -6,7 +6,11 @@ Dotfiles, also include some vim related files.
 
 Some self-defined functions and features.
 
-### commands
+## commands
+
+### prompttoggle
+
+Toggle between long prompt (default) and short prompt (focus mode).
 
 ### v
 
@@ -53,6 +57,12 @@ Combined mkdir and cd.
 Cat a file from ~/templates/.
 
 Call this in vim ```:r!vread <file>``` to insert.
+
+### ytd
+
+Usage: ytd [url] (format)
+
+youtube-dl. Defualt format=mp3
 
 # Vimrc features and commands
 

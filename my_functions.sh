@@ -70,3 +70,12 @@ function vread() {
 	command cd ~/templates
 	cat $1
 }
+
+# youtube-dl
+function ytd() {
+	X_FORMAT="mp3"
+	if [[ $# -eq 2 ]] ; then
+		X_FORMAT=$2
+	fi
+	command youtube-dl -x --audio-format $X_FORMAT $1
+}
