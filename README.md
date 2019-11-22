@@ -115,6 +115,9 @@ Ctrl:
 
 - [insert mode] ctrl + \: map to ctrl + O. For quick commands in insert mode.
 
+### F6 execute command
+
+- F6 to execute command in current line with current shell.
 
 ### F9 compile
 
