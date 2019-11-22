@@ -362,7 +362,7 @@ map <C-p> :call Preview_file()<Enter><C-l>
 func Preview_file()
 	exec 'w'
 	if &filetype=='markdown'
-		silent exec "!open %"
+		silent exec "!open %:p"
 	elseif &filetype=='tex'
 		silent exec "!open %<.pdf"
 	endif
@@ -381,13 +381,8 @@ func Compile()
 	endif
 endfunc
 
+" execute command in current line from vim
+nnoremap <F6> :exec '!'.getline('.')<CR>
+
 "F7 auto fix indent
 map <F7> mzgg=G`z
-
-"Fuckbug
-"F8 fuck bug
-com FB call Fuckbug()
-map <F8> :call Fuckbug()<Enter>
-function Fuckbug()
-	r~/.vim/stuff/fuckbug.c
-endfunction
