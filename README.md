@@ -8,7 +8,7 @@ Some self-defined functions and features.
 
 ## commands
 
-### prompttoggle
+### tprompt
 
 Toggle between long prompt (default) and short prompt (focus mode).
 
