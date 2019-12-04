@@ -12,11 +12,6 @@ case "${unameOut}" in
     *)          machine="UNKNOWN:${unameOut}"
 esac
 
-# if in interactive mode
-if [[ $- == *i* ]]; then
-	echo "Machine=${machine}"
-fi
-
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
@@ -170,7 +165,7 @@ fi
 unset color_prompt force_color_prompt
 
 # toggle prompt command, focus mode!!
-alias prompttoggle='if test "$PROMPT_COMMAND" = "set_bash_prompt" ; then PROMPT_COMMAND="short_prompt" ; else PROMPT_COMMAND="set_bash_prompt" ; fi'
+alias tprompt='if test "$PROMPT_COMMAND" = "set_bash_prompt" ; then PROMPT_COMMAND="short_prompt" ; else PROMPT_COMMAND="set_bash_prompt" ; fi'
 
 # ls colors
 if [[ ! -f ~/.dircolors ]] ; then
