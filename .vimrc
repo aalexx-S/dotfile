@@ -26,6 +26,8 @@ Plug 'ashfinal/vim-colors-violet'
 Plug 'scrooloose/nerdtree'
 " vimtex
 Plug 'lervag/vimtex'
+" vim writegood
+Plug 'davidbeckingsale/writegood.vim'
 " vim-surround
 Plug 'tpope/vim-surround'
 " vim-sort
