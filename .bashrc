@@ -112,7 +112,7 @@ function git_stash_check_current_branch(){
 		branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
 		stashes=`git stash list | grep -i "on $branch"`
 		if [[ $stashes ]] ; then
-			echo -e " \033[1;31;7m!!Stash!!"
+			echo -e " \001\033[1;31;7m\002!!Stash!!"
 		fi
 	fi
 }
@@ -122,24 +122,24 @@ function parse_current_directory(){
 	if [[ $cur == "~" ]] ; then
 		cur="~/"
 	fi
-	echo -e "\033[38;5;39m${cur%/*}/\e[38;5;208m${cur##*/}"
+	echo -e "\001\033[38;5;39m\002${cur%/*}/\001\e[38;5;208m\002${cur##*/}"
 }
 
 function virtualenv_check(){
 	if [[ "$VIRTUAL_ENV" != "" ]] ; then
-		echo -e "\e[38;5;185m(virtualenv: ${VIRTUAL_ENV##*/})"
+		echo -e "\001\e[38;5;185m\002(virtualenv: ${VIRTUAL_ENV##*/})"
 	fi
 }
 
 function user_check(){
-	echo -e "\e[38;5;150m"
+	echo -e "\001\e[38;5;150m\002"
 }
 
 function error_check(){
 	if [[ $__MY_EXIT -gt 127 ]] ; then
-		echo -e "\e[38;5;208m[SIG:$(kill -l $(($__MY_EXIT-128)))] "
+		echo -e "\001\e[38;5;208m\002[SIG:$(kill -l $(($__MY_EXIT-128)))] "
 	elif [[ $__MY_EXIT -ne 0 ]] ; then
-		echo -e "\e[1;38;5m[ERR:$__MY_EXIT] "
+		echo -e "\001\e[1;38;5m\002[ERR:$__MY_EXIT] "
 	fi
 }
 
@@ -149,7 +149,7 @@ function set_bash_prompt() {
 
 	PS1='\n \[\e[38;5;39m\]\d \[\e[38;5;36m\][ \t ] $(virtualenv_check)\n \[\e[38;5;36m\][\!] ${debian_chroot:+($debian_chroot)} $(user_check)\u @ \h\[\033[00m\]: $(parse_current_directory) \[\e[0m\]\[\033[00m\]\n\[\033[1;38;5;196m\]$(__git_ps1)$(git_stash_check_current_branch) $(error_check)\[\033[00m\]\$ '
 	# sometimes cursor randomly dissapear...
-	echo -en "\e[?25h"
+	echo -en "\001\e[?25h\002"
 }
 
 # short prompt command
