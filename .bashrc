@@ -122,7 +122,7 @@ function parse_current_directory(){
 	if [[ $cur == "~" ]] ; then
 		cur="~/"
 	fi
-	echo -e "\001\033[38;5;39m\002${cur%/*}/\001\e[38;5;208m\002${cur##*/}"
+	echo -e "\001\033[38;5;39m\002${cur%/*}/\001\e[38;5;208m\002 \b${cur##*/}"
 }
 
 function virtualenv_check(){
