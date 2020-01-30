@@ -296,7 +296,9 @@ set tabline=%!MyTabLine()
 
 "folding
 setlocal foldmethod=indent
-autocmd FileType python set foldignore=
+set foldopen-=block
+au FileType python set foldignore=
+au FileType c,cpp setlocal foldmethod=syntax
 
 "Habit making... disable cursor key
 noremap <Up> <NOP>
