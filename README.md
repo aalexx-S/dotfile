@@ -76,10 +76,22 @@ Run ``` vim +PlugInstall``` to install plugins and use ```vim +PlugUpdate``` to 
 
 A really powerful autocompletion and linting engine.
 
+- c/c++/obj-c: clangd
+	```
+	sudo apt-get install clang-tools-8
+	sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-8 100
+	```
+
+	Check out ```https://clang.llvm.org/extra/clangd/Installation.html``` for more help.
+
+
 - python: ```pip install jedi pylint --user```
+
 - bash: ```npm i -g bash-language-server```
 	- May encounter permission issue due to WSL 1.
+
 - LaTeX: vimtex is needed. Already in .vimrc.
+
 - text: language tool. check ```https://github.com/languagetool-org/languagetool```
 
 Movement:
