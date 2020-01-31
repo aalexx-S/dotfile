@@ -299,6 +299,11 @@ setlocal foldmethod=indent
 set foldopen-=block
 au FileType python set foldignore=
 au FileType c,cpp setlocal foldmethod=syntax
+" set fold to manual when entering insert mode to avoid auto expanding fold
+" when entering unmatched bracket
+autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
+" reset fold method after leaving insert mode
+autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
 
 "Habit making... disable cursor key
 noremap <Up> <NOP>
