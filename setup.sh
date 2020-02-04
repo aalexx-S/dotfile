@@ -23,4 +23,5 @@ if [[ ! -f ~/ltcd.sh ]] ; then
 fi
 
 # install node.js for Coc, vim completion engine
-curl -sL install-node.now.sh/lts | sudo bash
+# may need permission.
+curl -sL install-node.now.sh/lts | bash
