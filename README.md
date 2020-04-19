@@ -6,6 +6,12 @@ Dotfiles, also include some vim related files.
 
 Some self-defined functions and features.
 
+## Warning messages
+
+1. git stash
+2. virtualenv (for python)
+3. .sourceme.sh
+
 ## commands
 
 ### tprompt

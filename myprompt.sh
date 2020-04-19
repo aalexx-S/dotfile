@@ -22,6 +22,12 @@ function virtualenv_check(){
 	fi
 }
 
+function sourceme_check() {
+	if [[ -f ".sourceme.sh" ]]; then
+		echo -e "\001\e[38;5;185m\002(.sourceme.sh exists!)"
+	fi
+}
+
 function user_check(){
 	echo -e "\001\e[38;5;150m\002"
 }
@@ -35,10 +41,12 @@ function error_check(){
 }
 
 # Bash prompt magic
+# this spawns a lot of process.
+# You should switch to short prompt on shared servers.
 function set_bash_prompt() {
 	__MY_EXIT=$? #Save last exit code
 
-	PS1='\n \[\e[38;5;39m\]\d \[\e[38;5;36m\][ \t ] $(virtualenv_check)\n \[\e[38;5;36m\][\!] ${debian_chroot:+($debian_chroot)} $(user_check)\u @ \h\[\033[00m\]: $(parse_current_directory) \[\e[0m\]\[\033[00m\]\n\[\033[1;38;5;196m\]$(__git_ps1)$(git_stash_check_current_branch) $(error_check)\[\033[00m\]\$ '
+	PS1='\n \[\e[38;5;39m\]\d \[\e[38;5;36m\][ \t ] $(virtualenv_check) $(sourceme_check)\n \[\e[38;5;36m\][\!] ${debian_chroot:+($debian_chroot)} $(user_check)\u @ \h\[\033[00m\]: $(parse_current_directory) \[\e[0m\]\[\033[00m\]\n\[\033[1;38;5;196m\]$(__git_ps1)$(git_stash_check_current_branch) $(error_check)\[\033[00m\]\$ '
 	# sometimes cursor randomly dissapear...
 	echo -en "\e[?25h"
 }
