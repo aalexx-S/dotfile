@@ -18,6 +18,7 @@ export LC_ALL=en_US.UTF-8
 # Change vim to default editor
 export VISUAL=vim
 export EDITOR="$VISUAL"
+export DISPLAY="localhost:0.0" # enable X11 with XcXsrv on windows
 
 # remove old vim undo files
 # when last edit is over 45 days ago
@@ -154,7 +155,7 @@ function set_bash_prompt() {
 
 # short prompt command
 function short_prompt() {
-    PS1='\n${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='\n \[\e[38;5;36m\][\t] ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ '
 }
 
 if [ "$color_prompt" = yes ]; then
