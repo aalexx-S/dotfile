@@ -13,6 +13,16 @@ function git() {
 		command git log --oneline
 	elif [[ $@ == "log -og" ]]; then
 		command git log --oneline --graph
+	elif [[ $1 == "ff" ]]; then
+		local STEP
+		STEP=2
+		if [[ ! -z $2 ]]; then
+			STEP=$2
+		fi
+		echo "Autofixup last $STEP commits. Fix up commits whose message is 'ff'."
+		export GIT_SEQUENCE_EDITOR=~/gitautofixup.sh
+		git rebase -i HEAD~$STEP
+		unset GIT_SEQUENCE_EDITOR
 	else
 		command git "$@"
 	fi
@@ -33,7 +43,6 @@ function open() {
 		fi
 		command cmd.exe /c start "$@"
 	else
-
 		command xdg-open "$@"
 	fi
 }
@@ -70,6 +79,9 @@ function vread() {
 	command cd ~/templates
 	cat $1
 }
+
+vread_comp="$(ls ~/templates)"
+complete -W "${vread_comp}" vread
 
 # youtube-dl
 function ytd() {

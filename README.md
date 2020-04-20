@@ -28,9 +28,14 @@ This is the same as &lt;C-x>&lt;C-e>
 
 ### git
 
-* git branch --show-description
+- ```git branch --show-description```
+	- Show description of current branch. Not very usefull...
 
-* git log -o / git log -og
+- ```git log -o``` / ```git log -og```
+	- ```-o``` for oneline, and ```-og``` for oneline and graph. 
+
+-  ```git ff (number)```
+	- autofixup the last commit if the message is "ff" (or up to 'number' - 1 cocmmits)
 
 ### open
 
