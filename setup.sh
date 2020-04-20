@@ -22,6 +22,30 @@ if [[ ! -f ~/ltcd.sh ]] ; then
 	{ set +x; } 2>/dev/null
 fi
 
+# download dircolors
+if [[ ! -f ~/.dircolors ]] ; then
+	echo "Downloading dircolors."
+	curl https://raw.githubusercontent.com/aalexx-S/dircolors-solarized/master/dircolors.256dark > ~/.dircolors
+fi
+
+# copy files to home dir
+CPFILE=(.bash_aliases .bash_git .bashrc gitautofixup.sh .git_show_description.sh .inputrc my_functions.sh myprompt.sh .pylintrc .vimrc)
+CPDIR=(templates .vim)
+
+echo "Ignoring .shh folder."
+
+for i in "${CPFILE[@]}" do
+	cp $i ~/
+done
+
+for i in "${CPDIR[@]}" do
+	cp -r $i ~/
+done
+
 # install node.js for Coc, vim completion engine
 # may need permission.
-curl -sL install-node.now.sh/lts | bash
+if [[ "$EUID" -ne 0 ]]
+	echo "Install node.js requires root permission. Exiting."
+else
+	curl -sL install-node.now.sh/lts | bash
+fi
