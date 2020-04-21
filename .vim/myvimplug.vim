@@ -17,18 +17,17 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " buffer explorer
 Plug 'jlanzarotta/bufexplorer'
-" base16 color theme
+" colorscheme
 Plug 'ashfinal/vim-colors-violet'
+Plug 'sainnhe/gruvbox-material'
 " nerd tree
-Plug 'scrooloose/nerdtree'
+Plug 'ctrlpvim/ctrlp.vim'
 " vimtex
 Plug 'lervag/vimtex'
 " vim writegood
 Plug 'davidbeckingsale/writegood.vim'
 " vim-surround
 Plug 'tpope/vim-surround'
-" vim-sort
-Plug 'christoomey/vim-sort-motion'
 
 "" 2. Any valid git URL is allowed
 " Plug 'https://github.com/junegunn/vim-github-dashboard.git'

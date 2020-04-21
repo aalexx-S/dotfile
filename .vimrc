@@ -127,8 +127,8 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 set t_Co=256
 syntax on
 set encoding=utf-8
-" installed colorscheme: violet, gruvbox
-colorscheme gruvbox
+" installed colorscheme: violet, gruvbox, gruvbox-material
+colorscheme violet
 set background=dark
 hi Normal ctermbg=black
 hi Folded ctermbg=235
