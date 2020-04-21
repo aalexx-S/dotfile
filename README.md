@@ -119,9 +119,9 @@ Movement:
 
 ### vim surround
 
-### vim sort
+### vim ctrlp
 
-- gsip to sort those python imports
+- fuzzy file search.
 
 ### Other custom commands
 
