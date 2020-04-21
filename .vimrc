@@ -24,13 +24,13 @@ let g:airline#extensions#whitespace#enabled = 0
 
 " Nerdtree
 " Open nerdtree if no file on opening vim
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | wincmd w | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | wincmd w | endif
 " Open nerdtree if vim open with directory instead of file
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 " Close vim if the only window left is nerdtree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
 "*****************************************
@@ -127,7 +127,8 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 set t_Co=256
 syntax on
 set encoding=utf-8
-colorscheme violet
+" installed colorscheme: violet, gruvbox
+colorscheme gruvbox
 set background=dark
 hi Normal ctermbg=black
 hi Folded ctermbg=235
