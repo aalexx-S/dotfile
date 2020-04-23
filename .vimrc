@@ -62,12 +62,19 @@ set bs=2
 set history=50
 set scrolloff=4
 set ruler
-set splitbelow
 set showcmd
 set hlsearch
 set wildmenu
 set wildmode=longest,list,full
 set ignorecase smartcase
+
+" split
+set splitbelow splitright
+"resize split
+nmap <C-up> :resize +3<cr>
+nmap <C-down> :resize -3<cr>
+nmap <C-left> :vertical resize +3<cr>
+nmap <C-right> :vertical resize -3<cr>
 
 " set up for buffer usage
 set hidden
