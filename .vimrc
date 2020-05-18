@@ -175,15 +175,15 @@ set shell=bash\ --login
 "Custom functions
 "*****************************************
 "markdown preview in web browser
-map <C-p> :call Preview_file()<Enter><C-l>
-func Preview_file()
-	exec 'w'
-	if &filetype=='markdown'
-		silent exec "!open %:p"
-	elseif &filetype=='tex'
-		silent exec "!open %<.pdf"
-	endif
-endfunc
+"map <C-p> :call Preview_file()<Enter><C-l>
+"func Preview_file()
+"	exec 'w'
+"	if &filetype=='markdown'
+"		silent exec "!open %:p"
+"	elseif &filetype=='tex'
+"		silent exec "!open %<.pdf"
+"	endif
+"endfunc
 
 "F9 compile ^^
 map <F9> :call Compile()<Enter>

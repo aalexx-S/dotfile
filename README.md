@@ -149,5 +149,9 @@ Ctrl:
 
 ### Ctrl-p
 
+- The ctrlp fuzzy file search.
+
+<!--
 - Markdown: save the file and execute ```open %```. In windows WSL, since markdown file cannot be associate with any program, bash will use chrome instead.
 - LaTeX: save the file and open pdf with the same name.
+-->
