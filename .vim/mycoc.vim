@@ -127,5 +127,9 @@ if v:version >= 800
 	nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 	" Resume latest coc list
 	nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+	" parameters
+	" disable warnings when feature not supported with current version
+	let g:coc_disable_startup_warning = 1
 endif
 
