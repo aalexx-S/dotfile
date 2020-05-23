@@ -34,17 +34,19 @@ CPDIR=(templates .vim)
 
 echo "Ignoring .shh folder."
 
-for i in "${CPFILE[@]}" do
-	cp $i ~/
+for i in "${CPFILE[@]}"; do
+	echo "Copy $i to ~/"
+	cp "$i" ~/
 done
 
-for i in "${CPDIR[@]}" do
+for i in "${CPDIR[@]}"; do
+	echo "Copy $i to ~/"
 	cp -r $i ~/
 done
 
 # install node.js for Coc, vim completion engine
 # may need permission.
-if [[ "$EUID" -ne 0 ]]
+if [[ "$EUID" -ne 0 ]]; then
 	echo "Install node.js requires root permission. Exiting."
 else
 	curl -sL install-node.now.sh/lts | bash
