@@ -22,6 +22,9 @@ let g:airline_symbols.linenr = '»'
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 
+" ctrlP funky
+"see in <leader> section.
+
 " Nerdtree
 " Open nerdtree if no file on opening vim
 "autocmd StdinReadPre * let s:std_in=1
@@ -43,8 +46,8 @@ nnoremap <leader><space> :noh <bar> :pclose<cr>
 nnoremap <leader>e gn<Esc>l
 " pasting from outside (with shift-insert)
 nnoremap <leader>p :set invpaste paste?<CR>
-" Open nerdtree
-nnoremap <leader>n :NERDTreeToggle<CR>
+" ctrlp funky. search function def.
+nnoremap <leader>f :CtrlPFunkyMulti<cr>
 " read template
 nnoremap <leader>rt :-1r!vread<space>~/templates/
 " Quick command from insert mode

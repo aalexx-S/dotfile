@@ -123,6 +123,14 @@ Movement:
 
 - fuzzy file search.
 
+- Ctrl-p to search.
+
+- C-f and C-b to toggle search target.
+
+- C-r to toggle regex.
+
+- &lt;leader> to search function definition.
+
 ### Other custom commands
 
 "Leader" is set to '\\'.

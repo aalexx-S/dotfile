@@ -20,8 +20,10 @@ Plug 'jlanzarotta/bufexplorer'
 " colorscheme
 Plug 'ashfinal/vim-colors-violet'
 Plug 'sainnhe/gruvbox-material'
-" nerd tree
+" file navigation
 Plug 'ctrlpvim/ctrlp.vim'
+" search function definition with regex
+Plug 'tacahiroy/ctrlp-funky'
 " vimtex
 Plug 'lervag/vimtex'
 " vim writegood
