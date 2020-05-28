@@ -33,7 +33,9 @@ function user_check(){
 }
 
 function error_check(){
-	if [[ $__MY_EXIT -gt 127 ]] ; then
+	if [[ $__MY_EXIT -eq 255 ]] ; then
+		echo -e "\001\e[38;5;106m\002[ERR:255] "
+	elif [[ $__MY_EXIT -gt 127 ]] ; then
 		echo -e "\001\e[38;5;106m\002[SIG:$(kill -l $(($__MY_EXIT-128)))] "
 	elif [[ $__MY_EXIT -ne 0 ]] ; then
 		echo -e "\001\e[38;5;106m\002[ERR:$__MY_EXIT]\001\e[25m\002 "
