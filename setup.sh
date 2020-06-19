@@ -43,3 +43,9 @@ for i in "${CPDIR[@]}"; do
 	echo "Copy $i to ~/"
 	cp -r $i ~/
 done
+
+## init vim
+vim +PlugInstall +qa
+
+# install coc plugins
+vim "+CocInstall coc-python coc-json" +qa
