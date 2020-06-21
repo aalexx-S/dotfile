@@ -44,6 +44,12 @@ for i in "${CPDIR[@]}"; do
 	cp -r $i ~/
 done
 
+# install pylint
+pip3 install pylint --user
+
+# install jedi
+pip3 install jedi --user
+
 ## init vim
 vim +PlugInstall +qa
 

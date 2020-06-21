@@ -17,11 +17,5 @@ curl -sL install-node.now.sh/lts | bash
 # install pip3
 apt install python3-pip
 
-# install pylint
-pip3 install pylint --user
-
-# install jedi
-pip3 install jedi --user
-
 # install bash language server
 npm i -g bash-language-server
