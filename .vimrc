@@ -100,7 +100,7 @@ set undolevels=1000 " how many undos
 set undoreload=10000 " lines of undos
 
 " folding
-setlocal foldmethod=indent
+set foldmethod=indent
 set foldopen-=block
 au FileType python set foldignore=
 au FileType c,cpp setlocal foldmethod=syntax
