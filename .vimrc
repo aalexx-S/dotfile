@@ -198,6 +198,14 @@ set shell=bash\ --login
 
 
 "*****************************************
+"File type specific settings
+"*****************************************
+" Turn off builtin python tabsize suggestion which does the following:
+"   setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8
+let g:python_recommended_style=0
+
+
+"*****************************************
 "Custom functions
 "*****************************************
 "markdown preview in web browser
