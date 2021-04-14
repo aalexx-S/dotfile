@@ -38,6 +38,20 @@ let g:tex_flavor = 'latex'
 " Close vim if the only window left is nerdtree
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+"*****************************************
+" Source file if exists function define
+"*****************************************
+" This is copied from
+" https://devel.tech/snippets/n/vIIMz8vZ/load-vim-source-files-only-if-they-exist
+"
+" Usage:
+" 	call SourceIfExists("~/mysource.vim")
+"
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction
 
 "*****************************************
 "The leader key
@@ -116,12 +130,18 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-" tab
-au FileType python set expandtab
+" Fix cursor position navigation key map problem.
+" There is a problem that causes <C-i> be traeted as <Tab> in vim.
+" Use <C-l> instead (paired with <C-o>) to navigate cursor jump position.
+nnoremap <C-l> <C-i>
+
+" Tab
+set expandtab
 set tabstop=4
-set softtabstop=0
-set shiftwidth=4
+set softtabstop=-1
+set shiftwidth=0
 set ai smarttab
+call SourceIfExists("~/.vim/localTabSetting.vim")
 
 " Line number
 set nu rnu
