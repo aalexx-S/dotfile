@@ -18,7 +18,7 @@ fi
 if [[ ! -f ~/ltcd.sh ]] ; then
 	echo "Downloading ltcd, a cd wrapper."
 	set -x
-	curl https://raw.githubusercontent.com/dczhu/ltcd/master/ltcd > ~/ltcd.sh
+	curl https://raw.githubusercontent.com/aalexx-S/ltcd/master/ltcd > ~/ltcd.sh
 	{ set +x; } 2>/dev/null
 fi
 
