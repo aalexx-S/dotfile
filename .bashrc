@@ -32,8 +32,8 @@ source ~/.bash_git
 source ~/h.sh
 source ~/cxpgrep.sh
 source ~/ltcd.sh
-# my_functions
-source ~/my_functions.sh
+# my bash functions
+source ~/myfunctions.sh
 
 ## PATH
 # Platform related stuff

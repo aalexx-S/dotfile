@@ -91,3 +91,41 @@ function ytd() {
 	fi
 	command youtube-dl -x --audio-format $X_FORMAT $1
 }
+
+# Search parrent dir for match pattern
+# Example:
+#   pwd = /path/fruit/red/apple
+#   $ pdir fruit
+#   and
+#   $ pdir fr
+#   will return /path/fruit. It searches "pattern*" i.e. prefix.
+# Usage:
+#   cd $(pdir my_project_root)/other/dir
+#
+# Sadly, this doesn't benefit from path auto completion.
+# Warning: Watchout when there are spaces in pwd.
+function pdir(){
+    cur="$(pwd)"
+
+    if [[ -z $2 ]] ; then
+        count=1
+    else
+        count=$2
+    fi
+
+    while [[ ! -z $cur ]] ; do
+        token="${cur##*/}"
+        if [[ $token == $1* ]] ; then
+            count=$(($count-1))
+            if [[ $count -eq 0 ]] ; then
+                echo "$cur"
+                return
+            fi
+        fi
+        cur="${cur%/*}"
+    done
+
+    >&2 echo "No matched parent dir pattern found."
+    exit 1
+}
+
