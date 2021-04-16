@@ -59,6 +59,12 @@ Highlight tool.
 
 Ltcd. Use ```cd --``` to select and ```cd -n``` to go to last n dir.
 
+### pdir PREFIX [count=1]
+
+Search parent directory for matching PREFIX name.
+
+Useful when combining with ```ls``` and ```cd```.
+
 ### mkcd
 
 Combined mkdir and cd.
