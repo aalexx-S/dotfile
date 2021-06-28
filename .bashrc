@@ -149,3 +149,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+## Source local settings
+if [[ -f ~/localsettings.sh ]] ; then
+    source ~/localsettings.sh
+fi
