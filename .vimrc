@@ -87,6 +87,7 @@ set hlsearch
 set wildmenu
 set wildmode=longest,list,full
 set ignorecase smartcase
+set splitbelow
 
 " split
 set splitbelow splitright
@@ -187,7 +188,7 @@ highlight iCursor guifg=white guibg=steelblue
 "git commit message shouldn't be too long
 au FileType gitcommit set tw=72 cc=+1
 "pep8 ruler, not practical
-""au FileType python set tw=79 cc=+1
+au FileType python set tw=79 cc=+1
 
 "restore cursor postion after closing a file
 set viminfo='10,\"100,:20,%,n~/.viminfo
