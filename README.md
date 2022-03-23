@@ -152,6 +152,10 @@ Ctrl:
 
 - [insert mode] ctrl + \: map to ctrl + O. For quick commands in insert mode.
 
+SS
+
+- `:SS` is alias to `syntax sync fromstart` since syntax highlighting is a little bit funky with folding. 
+
 ### F6 execute command
 
 - F6 to execute command in current line with current shell.

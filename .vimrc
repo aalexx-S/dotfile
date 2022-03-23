@@ -70,6 +70,10 @@ nnoremap <leader>rt :-1r!vread<space>~/templates/
 " Quick command from insert mode
 imap <C-\> <C-O>
 
+"*****************************************
+" Commands
+"*****************************************
+command SS syntax sync fromstart
 
 "*****************************************
 "General vim settings
