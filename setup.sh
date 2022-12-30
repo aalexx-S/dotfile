@@ -30,7 +30,7 @@ fi
 
 # copy files to home dir
 CPFILE=(.bash_aliases .bash_git .bashrc gitautofixup.sh .git_show_description.sh .inputrc myfunctions.sh myprompt.sh .pylintrc .vimrc)
-CPDIR=(templates .vim)
+CPDIR=(templates .vim .jupyter)
 
 echo "Ignoring .shh folder."
 
