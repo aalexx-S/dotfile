@@ -20,6 +20,9 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 export DISPLAY="localhost:0.0" # enable X11 with XcXsrv on windows
 
+# Export history so we don't lost them when multi terminal
+export PROMPT_COMMAND='history -a'
+
 # remove old vim undo files
 # when last edit is over 45 days ago
 find ~/.vim/undo -type f -mtime +45 -delete
